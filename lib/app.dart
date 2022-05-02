@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:quiz_app/data/data_provider.dart';
 import 'package:quiz_app/router.dart';
 
 class QuizApp extends StatefulWidget {
-  const QuizApp({Key? key}) : super(key: key);
-
+  const QuizApp({Key? key, required this.dataProvider}) : super(key: key);
+  final DataProvider dataProvider;
   @override
   State<QuizApp> createState() => _QuizAppState();
 }
@@ -13,7 +14,7 @@ class _QuizAppState extends State<QuizApp> {
   @override
   void initState() {
     super.initState();
-    _appRouter = const AppRouter();
+    _appRouter =  AppRouter(dataProvider: widget.dataProvider);
   }
   @override
   Widget build(BuildContext context) {
